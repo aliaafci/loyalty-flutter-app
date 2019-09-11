@@ -1,0 +1,22 @@
+Attached UCs [6]
+
+register
+login
+change password
+get all categories 
+get all partners 
+get all partners  under category
+
+
+Remaning UCs are [3
+
+1) Get customer subscription 
+2) Add subscriptions 
+3) Get subscription details
+
+
+https://loyalty-20191.herokuapp.com/api/
+
+Postman Collection:
+
+https://www.getpostman.com/collections/84b9b34a93798cb2fd1a

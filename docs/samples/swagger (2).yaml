@@ -1,0 +1,1958 @@
+swagger: '2.0'
+info:
+  description: loyaltyBetaApp API documentation
+  version: 0.0.1
+  title: loyaltyBetaApp API
+  contact: {}
+  license: {name: loyaltyBetaApp}
+host: 'localhost:8080'
+basePath: /
+tags:
+  - name: account-resource
+    description: Account Resource
+  - name: category-info-resource
+    description: Category Info Resource
+  - name: history-info-resource
+    description: History Info Resource
+  - name: partner-info-resource
+    description: Partner Info Resource
+  - name: subscriber-info-resource
+    description: Subscriber Info Resource
+  - name: subscription-info-resource
+    description: Subscription Info Resource
+  - name: user-jwt-controller
+    description: User JWT Controller
+  - name: user-resource
+    description: User Resource
+paths:
+  /api/_search/category-infos:
+    get:
+      tags:
+        - category-info-resource
+      summary: searchCategoryInfos
+      operationId: searchCategoryInfosUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: query
+          in: query
+          description: query
+          required: true
+          type: string
+        - name: page
+          in: query
+          description: Page number of the requested page
+          required: false
+          type: integer
+          format: int32
+        - name: size
+          in: query
+          description: Size of a page
+          required: false
+          type: integer
+          format: int32
+        - name: sort
+          in: query
+          description: 'Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CategoryInfo'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /api/_search/history-infos:
+    get:
+      tags:
+        - history-info-resource
+      summary: searchHistoryInfos
+      operationId: searchHistoryInfosUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: query
+          in: query
+          description: query
+          required: true
+          type: string
+        - name: page
+          in: query
+          description: Page number of the requested page
+          required: false
+          type: integer
+          format: int32
+        - name: size
+          in: query
+          description: Size of a page
+          required: false
+          type: integer
+          format: int32
+        - name: sort
+          in: query
+          description: 'Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/HistoryInfo'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /api/_search/partner-infos:
+    get:
+      tags:
+        - partner-info-resource
+      summary: searchPartnerInfos
+      operationId: searchPartnerInfosUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: query
+          in: query
+          description: query
+          required: true
+          type: string
+        - name: page
+          in: query
+          description: Page number of the requested page
+          required: false
+          type: integer
+          format: int32
+        - name: size
+          in: query
+          description: Size of a page
+          required: false
+          type: integer
+          format: int32
+        - name: sort
+          in: query
+          description: 'Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/PartnerInfo'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /api/_search/subscriber-infos:
+    get:
+      tags:
+        - subscriber-info-resource
+      summary: searchSubscriberInfos
+      operationId: searchSubscriberInfosUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: query
+          in: query
+          description: query
+          required: true
+          type: string
+        - name: page
+          in: query
+          description: Page number of the requested page
+          required: false
+          type: integer
+          format: int32
+        - name: size
+          in: query
+          description: Size of a page
+          required: false
+          type: integer
+          format: int32
+        - name: sort
+          in: query
+          description: 'Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/SubscriberInfo'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /api/_search/subscription-infos:
+    get:
+      tags:
+        - subscription-info-resource
+      summary: searchSubscriptionInfos
+      operationId: searchSubscriptionInfosUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: query
+          in: query
+          description: query
+          required: true
+          type: string
+        - name: page
+          in: query
+          description: Page number of the requested page
+          required: false
+          type: integer
+          format: int32
+        - name: size
+          in: query
+          description: Size of a page
+          required: false
+          type: integer
+          format: int32
+        - name: sort
+          in: query
+          description: 'Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/SubscriptionInfo'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  '/api/_search/users/{query}':
+    get:
+      tags:
+        - user-resource
+      summary: search
+      operationId: searchUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: query
+          in: path
+          description: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/User'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /api/account:
+    get:
+      tags:
+        - account-resource
+      summary: getAccount
+      operationId: getAccountUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/UserDTO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    post:
+      tags:
+        - account-resource
+      summary: saveAccount
+      operationId: saveAccountUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: userDTO
+          description: userDTO
+          required: true
+          schema:
+            $ref: '#/definitions/UserDTO'
+      responses:
+        '200':
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /api/account/change-password:
+    post:
+      tags:
+        - account-resource
+      summary: changePassword
+      operationId: changePasswordUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: passwordChangeDto
+          description: passwordChangeDto
+          required: true
+          schema:
+            $ref: '#/definitions/PasswordChangeDTO'
+      responses:
+        '200':
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /api/account/reset-password/finish:
+    post:
+      tags:
+        - account-resource
+      summary: finishPasswordReset
+      operationId: finishPasswordResetUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: keyAndPassword
+          description: keyAndPassword
+          required: true
+          schema:
+            $ref: '#/definitions/KeyAndPasswordVM'
+      responses:
+        '200':
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /api/account/reset-password/init:
+    post:
+      tags:
+        - account-resource
+      summary: requestPasswordReset
+      operationId: requestPasswordResetUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: mail
+          description: mail
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /api/activate:
+    get:
+      tags:
+        - account-resource
+      summary: activateAccount
+      operationId: activateAccountUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: key
+          in: query
+          description: key
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /api/authenticate:
+    get:
+      tags:
+        - account-resource
+      summary: isAuthenticated
+      operationId: isAuthenticatedUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    post:
+      tags:
+        - user-jwt-controller
+      summary: authorize
+      operationId: authorizeUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: loginVM
+          description: loginVM
+          required: true
+          schema:
+            $ref: '#/definitions/LoginVM'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/JWTToken'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /api/category-infos:
+    get:
+      tags:
+        - category-info-resource
+      summary: getAllCategoryInfos
+      operationId: getAllCategoryInfosUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: page
+          in: query
+          description: Page number of the requested page
+          required: false
+          type: integer
+          format: int32
+        - name: size
+          in: query
+          description: Size of a page
+          required: false
+          type: integer
+          format: int32
+        - name: sort
+          in: query
+          description: 'Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CategoryInfo'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    post:
+      tags:
+        - category-info-resource
+      summary: createCategoryInfo
+      operationId: createCategoryInfoUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: categoryInfo
+          description: categoryInfo
+          required: true
+          schema:
+            $ref: '#/definitions/CategoryInfo'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/CategoryInfo'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    put:
+      tags:
+        - category-info-resource
+      summary: updateCategoryInfo
+      operationId: updateCategoryInfoUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: categoryInfo
+          description: categoryInfo
+          required: true
+          schema:
+            $ref: '#/definitions/CategoryInfo'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/CategoryInfo'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  '/api/category-infos/{id}':
+    get:
+      tags:
+        - category-info-resource
+      summary: getCategoryInfo
+      operationId: getCategoryInfoUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/CategoryInfo'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    delete:
+      tags:
+        - category-info-resource
+      summary: deleteCategoryInfo
+      operationId: deleteCategoryInfoUsingDELETE
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /api/history-infos:
+    get:
+      tags:
+        - history-info-resource
+      summary: getAllHistoryInfos
+      operationId: getAllHistoryInfosUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: page
+          in: query
+          description: Page number of the requested page
+          required: false
+          type: integer
+          format: int32
+        - name: size
+          in: query
+          description: Size of a page
+          required: false
+          type: integer
+          format: int32
+        - name: sort
+          in: query
+          description: 'Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/HistoryInfo'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    post:
+      tags:
+        - history-info-resource
+      summary: createHistoryInfo
+      operationId: createHistoryInfoUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: historyInfo
+          description: historyInfo
+          required: true
+          schema:
+            $ref: '#/definitions/HistoryInfo'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/HistoryInfo'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    put:
+      tags:
+        - history-info-resource
+      summary: updateHistoryInfo
+      operationId: updateHistoryInfoUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: historyInfo
+          description: historyInfo
+          required: true
+          schema:
+            $ref: '#/definitions/HistoryInfo'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/HistoryInfo'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  '/api/history-infos/{id}':
+    get:
+      tags:
+        - history-info-resource
+      summary: getHistoryInfo
+      operationId: getHistoryInfoUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/HistoryInfo'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    delete:
+      tags:
+        - history-info-resource
+      summary: deleteHistoryInfo
+      operationId: deleteHistoryInfoUsingDELETE
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /api/history/full:
+    get:
+      tags:
+        - history-info-resource
+      summary: getAllUserHistory
+      operationId: getAllUserHistoryUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: page
+          in: query
+          description: Page number of the requested page
+          required: false
+          type: integer
+          format: int32
+        - name: size
+          in: query
+          description: Size of a page
+          required: false
+          type: integer
+          format: int32
+        - name: sort
+          in: query
+          description: 'Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/HistoryInfo'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  '/api/history/subscription/{subscriptionId}':
+    get:
+      tags:
+        - history-info-resource
+      summary: getSpecificSubscriptionHistory
+      operationId: getSpecificSubscriptionHistoryUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: subscriptionId
+          in: path
+          description: subscriptionId
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/HistoryInfo'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /api/partner-infos:
+    get:
+      tags:
+        - partner-info-resource
+      summary: getAllPartnerInfos
+      operationId: getAllPartnerInfosUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: page
+          in: query
+          description: Page number of the requested page
+          required: false
+          type: integer
+          format: int32
+        - name: size
+          in: query
+          description: Size of a page
+          required: false
+          type: integer
+          format: int32
+        - name: sort
+          in: query
+          description: 'Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/PartnerInfo'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    post:
+      tags:
+        - partner-info-resource
+      summary: createPartnerInfo
+      operationId: createPartnerInfoUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: partnerInfo
+          description: partnerInfo
+          required: true
+          schema:
+            $ref: '#/definitions/PartnerInfo'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/PartnerInfo'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    put:
+      tags:
+        - partner-info-resource
+      summary: updatePartnerInfo
+      operationId: updatePartnerInfoUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: partnerInfo
+          description: partnerInfo
+          required: true
+          schema:
+            $ref: '#/definitions/PartnerInfo'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/PartnerInfo'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  '/api/partner-infos/category/{categoryId}':
+    get:
+      tags:
+        - partner-info-resource
+      summary: getPartnersByCategoryId
+      operationId: getPartnersByCategoryIdUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: categoryId
+          in: path
+          description: categoryId
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/PartnerInfo'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  '/api/partner-infos/{id}':
+    get:
+      tags:
+        - partner-info-resource
+      summary: getPartnerInfo
+      operationId: getPartnerInfoUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/PartnerInfo'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    delete:
+      tags:
+        - partner-info-resource
+      summary: deletePartnerInfo
+      operationId: deletePartnerInfoUsingDELETE
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /api/register:
+    post:
+      tags:
+        - account-resource
+      summary: registerAccount
+      operationId: registerAccountUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: managedUserVM
+          description: managedUserVM
+          required: true
+          schema:
+            $ref: '#/definitions/ManagedUserVM'
+      responses:
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /api/subscriber-infos:
+    get:
+      tags:
+        - subscriber-info-resource
+      summary: getAllSubscriberInfos
+      operationId: getAllSubscriberInfosUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: page
+          in: query
+          description: Page number of the requested page
+          required: false
+          type: integer
+          format: int32
+        - name: size
+          in: query
+          description: Size of a page
+          required: false
+          type: integer
+          format: int32
+        - name: sort
+          in: query
+          description: 'Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/SubscriberInfo'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    post:
+      tags:
+        - subscriber-info-resource
+      summary: createSubscriberInfo
+      operationId: createSubscriberInfoUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: subscriberInfo
+          description: subscriberInfo
+          required: true
+          schema:
+            $ref: '#/definitions/SubscriberInfo'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/SubscriberInfo'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    put:
+      tags:
+        - subscriber-info-resource
+      summary: updateSubscriberInfo
+      operationId: updateSubscriberInfoUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: subscriberInfo
+          description: subscriberInfo
+          required: true
+          schema:
+            $ref: '#/definitions/SubscriberInfo'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/SubscriberInfo'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  '/api/subscriber-infos/{id}':
+    get:
+      tags:
+        - subscriber-info-resource
+      summary: getSubscriberInfo
+      operationId: getSubscriberInfoUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/SubscriberInfo'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    delete:
+      tags:
+        - subscriber-info-resource
+      summary: deleteSubscriberInfo
+      operationId: deleteSubscriberInfoUsingDELETE
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /api/subscription-infos:
+    get:
+      tags:
+        - subscription-info-resource
+      summary: getAllSubscriptionInfos
+      operationId: getAllSubscriptionInfosUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: page
+          in: query
+          description: Page number of the requested page
+          required: false
+          type: integer
+          format: int32
+        - name: size
+          in: query
+          description: Size of a page
+          required: false
+          type: integer
+          format: int32
+        - name: sort
+          in: query
+          description: 'Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/SubscriptionInfo'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    post:
+      tags:
+        - subscription-info-resource
+      summary: createSubscriptionInfo
+      operationId: createSubscriptionInfoUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: subscriptionInfo
+          description: subscriptionInfo
+          required: true
+          schema:
+            $ref: '#/definitions/SubscriptionInfo'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/SubscriptionInfo'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    put:
+      tags:
+        - subscription-info-resource
+      summary: updateSubscriptionInfo
+      operationId: updateSubscriptionInfoUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: subscriptionInfo
+          description: subscriptionInfo
+          required: true
+          schema:
+            $ref: '#/definitions/SubscriptionInfo'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/SubscriptionInfo'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /api/subscription-infos/user/full:
+    get:
+      tags:
+        - subscription-info-resource
+      summary: getlAllUserSubscriptions
+      operationId: getlAllUserSubscriptionsUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: page
+          in: query
+          description: Page number of the requested page
+          required: false
+          type: integer
+          format: int32
+        - name: size
+          in: query
+          description: Size of a page
+          required: false
+          type: integer
+          format: int32
+        - name: sort
+          in: query
+          description: 'Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/SubscriptionInfo'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  '/api/subscription-infos/{id}':
+    get:
+      tags:
+        - subscription-info-resource
+      summary: getSubscriptionInfo
+      operationId: getSubscriptionInfoUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/SubscriptionInfo'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    delete:
+      tags:
+        - subscription-info-resource
+      summary: deleteSubscriptionInfo
+      operationId: deleteSubscriptionInfoUsingDELETE
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /api/users:
+    get:
+      tags:
+        - user-resource
+      summary: getAllUsers
+      operationId: getAllUsersUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: page
+          in: query
+          description: Page number of the requested page
+          required: false
+          type: integer
+          format: int32
+        - name: size
+          in: query
+          description: Size of a page
+          required: false
+          type: integer
+          format: int32
+        - name: sort
+          in: query
+          description: 'Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.'
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UserDTO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    post:
+      tags:
+        - user-resource
+      summary: createUser
+      operationId: createUserUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: userDTO
+          description: userDTO
+          required: true
+          schema:
+            $ref: '#/definitions/UserDTO'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/User'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    put:
+      tags:
+        - user-resource
+      summary: updateUser
+      operationId: updateUserUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: userDTO
+          description: userDTO
+          required: true
+          schema:
+            $ref: '#/definitions/UserDTO'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/UserDTO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /api/users/authorities:
+    get:
+      tags:
+        - user-resource
+      summary: getAuthorities
+      operationId: getAuthoritiesUsingGET
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              type: string
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  '/api/users/{login}':
+    get:
+      tags:
+        - user-resource
+      summary: getUser
+      operationId: getUserUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: login
+          in: path
+          description: login
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/UserDTO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    delete:
+      tags:
+        - user-resource
+      summary: deleteUser
+      operationId: deleteUserUsingDELETE
+      produces:
+        - '*/*'
+      parameters:
+        - name: login
+          in: path
+          description: login
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+definitions:
+  CategoryInfo:
+    type: object
+    required:
+      - arabicname
+      - name
+    properties:
+      arabicdescription:
+        type: string
+      arabicname:
+        type: string
+      description:
+        type: string
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      notes:
+        type: string
+      partnerInfos:
+        type: array
+        items:
+          $ref: '#/definitions/PartnerInfo'
+      updatetime:
+        type: string
+        format: date-time
+    title: CategoryInfo
+  HistoryInfo:
+    type: object
+    required:
+      - points
+      - recordtype
+    properties:
+      description:
+        type: string
+      id:
+        type: integer
+        format: int64
+      notes:
+        type: string
+      points:
+        type: integer
+        format: int64
+      recordtype:
+        type: string
+        enum:
+          - P
+          - M
+      subscriptionInfo:
+        $ref: '#/definitions/SubscriptionInfo'
+      updatetime:
+        type: string
+        format: date-time
+    title: HistoryInfo
+  JWTToken:
+    type: object
+    properties:
+      id_token:
+        type: string
+    title: JWTToken
+  KeyAndPasswordVM:
+    type: object
+    properties:
+      key:
+        type: string
+      newPassword:
+        type: string
+    title: KeyAndPasswordVM
+  LoginVM:
+    type: object
+    required:
+      - password
+      - username
+    properties:
+      password:
+        type: string
+        minLength: 4
+        maxLength: 100
+      rememberMe:
+        type: boolean
+      username:
+        type: string
+        minLength: 1
+        maxLength: 50
+    title: LoginVM
+  ManagedUserVM:
+    type: object
+    properties:
+      activated:
+        type: boolean
+      addressLine1:
+        type: string
+      addressLine2:
+        type: string
+      arabicFirstname:
+        type: string
+      arabicFullName:
+        type: string
+      arabicLastname:
+        type: string
+      authorities:
+        type: array
+        items:
+          type: string
+      birthdate:
+        type: string
+      city:
+        type: string
+      createdBy:
+        type: string
+      createdDate:
+        type: string
+        format: date-time
+      district:
+        type: string
+      email:
+        type: string
+        minLength: 5
+        maxLength: 254
+      englishFullName:
+        type: string
+      firstName:
+        type: string
+        minLength: 0
+        maxLength: 50
+      gender:
+        type: string
+      id:
+        type: integer
+        format: int64
+      imageUrl:
+        type: string
+        minLength: 0
+        maxLength: 256
+      langKey:
+        type: string
+        minLength: 2
+        maxLength: 6
+      lastModifiedBy:
+        type: string
+      lastModifiedDate:
+        type: string
+        format: date-time
+      lastName:
+        type: string
+        minLength: 0
+        maxLength: 50
+      login:
+        type: string
+        minLength: 1
+        maxLength: 50
+        pattern: '^[_.@A-Za-z0-9-]*$'
+      mobile:
+        type: string
+      password:
+        type: string
+        minLength: 4
+        maxLength: 100
+    title: ManagedUserVM
+  PartnerInfo:
+    type: object
+    required:
+      - arabicname
+      - categoryInfo
+      - name
+    properties:
+      arabicdescription:
+        type: string
+      arabicname:
+        type: string
+      categoryInfo:
+        $ref: '#/definitions/CategoryInfo'
+      description:
+        type: string
+      id:
+        type: integer
+        format: int64
+      logoimage:
+        type: string
+        format: byte
+      logoimageContentType:
+        type: string
+      name:
+        type: string
+      notes:
+        type: string
+      subscriptionInfos:
+        type: array
+        items:
+          $ref: '#/definitions/SubscriptionInfo'
+      updatetime:
+        type: string
+        format: date-time
+    title: PartnerInfo
+  PasswordChangeDTO:
+    type: object
+    properties:
+      currentPassword:
+        type: string
+      newPassword:
+        type: string
+    title: PasswordChangeDTO
+  SubscriberInfo:
+    type: object
+    required:
+      - addressLine1
+      - arabicfirstname
+      - arabiclastname
+      - email
+      - firstname
+      - lastname
+      - mobile
+      - user
+    properties:
+      addressLine1:
+        type: string
+      addressLine2:
+        type: string
+      arabicfirstname:
+        type: string
+      arabiclastname:
+        type: string
+      birthdate:
+        type: string
+        format: date
+      city:
+        type: string
+        enum:
+          - Riyadh
+          - Jeddah
+      district:
+        type: string
+        enum:
+          - AlBatha
+          - AlMalaz
+          - Olaya
+          - Sulaymaniyyah
+      email:
+        type: string
+      firstname:
+        type: string
+      gender:
+        type: string
+        enum:
+          - MALE
+          - FEMALE
+      id:
+        type: integer
+        format: int64
+      lastname:
+        type: string
+      mobile:
+        type: string
+      notes:
+        type: string
+      subscriptionInfos:
+        type: array
+        items:
+          $ref: '#/definitions/SubscriptionInfo'
+      updatetime:
+        type: string
+        format: date-time
+      user:
+        $ref: '#/definitions/User'
+    title: SubscriberInfo
+  SubscriptionInfo:
+    type: object
+    required:
+      - description
+      - partnerInfo
+      - points
+      - subscriberInfo
+    properties:
+      barcodeimage:
+        type: string
+        format: byte
+      barcodeimageContentType:
+        type: string
+      description:
+        type: string
+      historyInfos:
+        type: array
+        items:
+          $ref: '#/definitions/HistoryInfo'
+      id:
+        type: integer
+        format: int64
+      notes:
+        type: string
+      partnerInfo:
+        $ref: '#/definitions/PartnerInfo'
+      points:
+        type: integer
+        format: int64
+      subscriberInfo:
+        $ref: '#/definitions/SubscriberInfo'
+      updatetime:
+        type: string
+        format: date-time
+    title: SubscriptionInfo
+  User:
+    type: object
+    required:
+      - activated
+      - login
+    properties:
+      activated:
+        type: boolean
+      email:
+        type: string
+        minLength: 5
+        maxLength: 254
+      firstName:
+        type: string
+        minLength: 0
+        maxLength: 50
+      id:
+        type: integer
+        format: int64
+      imageUrl:
+        type: string
+        minLength: 0
+        maxLength: 256
+      langKey:
+        type: string
+        minLength: 2
+        maxLength: 6
+      lastName:
+        type: string
+        minLength: 0
+        maxLength: 50
+      login:
+        type: string
+        minLength: 1
+        maxLength: 50
+        pattern: '^[_.@A-Za-z0-9-]*$'
+      resetDate:
+        type: string
+        format: date-time
+    title: User
+  UserDTO:
+    type: object
+    properties:
+      activated:
+        type: boolean
+      authorities:
+        type: array
+        items:
+          type: string
+      createdBy:
+        type: string
+      createdDate:
+        type: string
+        format: date-time
+      email:
+        type: string
+        minLength: 5
+        maxLength: 254
+      firstName:
+        type: string
+        minLength: 0
+        maxLength: 50
+      id:
+        type: integer
+        format: int64
+      imageUrl:
+        type: string
+        minLength: 0
+        maxLength: 256
+      langKey:
+        type: string
+        minLength: 2
+        maxLength: 6
+      lastModifiedBy:
+        type: string
+      lastModifiedDate:
+        type: string
+        format: date-time
+      lastName:
+        type: string
+        minLength: 0
+        maxLength: 50
+      login:
+        type: string
+        minLength: 1
+        maxLength: 50
+        pattern: '^[_.@A-Za-z0-9-]*$'
+    title: UserDTO
